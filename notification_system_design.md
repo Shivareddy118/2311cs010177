@@ -105,184 +105,8 @@ GET /notifications/{id}
 
 ---
 
-## 3. Create Notification
 
-### Endpoint
 
-```
-POST /notifications
-```
-
-### Request Body
-
-```json
-{
-  "title": "Server Maintenance",
-  "message": "Server maintenance scheduled at 11 PM.",
-  "type": "warning",
-  "priority": "high"
-}
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "Notification created successfully.",
-  "notification": {
-    "id": "3",
-    "title": "Server Maintenance",
-    "message": "Server maintenance scheduled at 11 PM.",
-    "type": "warning",
-    "priority": "high",
-    "isRead": false
-  }
-}
-```
-
----
-
-## 4. Update Notification
-
-### Endpoint
-
-```
-PUT /notifications/{id}
-```
-
-### Request Body
-
-```json
-{
-  "title": "Updated Title",
-  "message": "Updated notification message.",
-  "priority": "medium"
-}
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "Notification updated successfully."
-}
-```
-
----
-
-## 5. Mark Notification as Read
-
-### Endpoint
-
-```
-PATCH /notifications/{id}/read
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "Notification marked as read."
-}
-```
-
----
-
-## 6. Mark All Notifications as Read
-
-### Endpoint
-
-```
-PATCH /notifications/read-all
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "All notifications marked as read."
-}
-```
-
----
-
-## 7. Get Unread Notifications
-
-### Endpoint
-
-```
-GET /notifications/unread
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "count": 1,
-  "notifications": [
-    {
-      "id": "5",
-      "title": "Offer",
-      "message": "Special discount available.",
-      "isRead": false
-    }
-  ]
-}
-```
-
----
-
-## 8. Delete Notification
-
-### Endpoint
-
-```
-DELETE /notifications/{id}
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "Notification deleted successfully."
-}
-```
-
----
-
-## 9. Delete All Notifications
-
-### Endpoint
-
-```
-DELETE /notifications
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "All notifications deleted successfully."
-}
-```
-
----
-
-# Error Response
-
-```json
-{
-  "success": false,
-  "message": "Notification not found."
-}
-```
 
 ---
 
@@ -306,7 +130,7 @@ The application uses **WebSocket (Socket.IO)** to send real-time notifications.
 ## Connection
 
 ```
-ws://localhost:3000
+http://4.224.186.213/evaluation-service/vehicles
 ```
 
 ## Events
@@ -320,39 +144,53 @@ connect
 ### New Notification
 
 ```json
-{
-  "event": "notification:new",
-  "data": {
-    "id": "10",
-    "title": "New Message",
-    "message": "You received a new message.",
-    "type": "info",
-    "priority": "medium"
-  }
-}
-```
+ {
+            "TaskID": "e8a6375e-508e-42d0-b786-b9dbc66c8a3f",
+            "Duration": 4,
+            "Impact": 3
+        },
+        {
+            "TaskID": "cd3af32d-e6e4-4ff8-a96d-89fb03c717fe",
+            "Duration": 1,
+            "Impact": 8
+        },
+        {
+            "TaskID": "4b8398ee-29d9-4fa7-9651-66774fbc3776",
+            "Duration": 1,
+            "Impact": 6
+        },
+        {
+            "TaskID": "33da6f0a-6d35-431a-9f9b-b4f0edf02eca",
+            "Duration": 5,
+            "Impact": 9
+        },
+        {
+            "TaskID": "7e45ccc3-810b-4fd1-9897-517b5ebe8278",
+            "Duration": 2,
+            "Impact": 2
+        },
+        {
+            "TaskID": "1f99fce1-2622-4d85-b3fc-61630fc905fe",
+            "Duration": 8,
+            "Impact": 1
+        },
+        {
+            "TaskID": "20c3f4c3-ac38-4ad4-b443-1af3ebfac84a",
+            "Duration": 8,
+            "Impact": 6
+        },
+        {
+            "TaskID": "d2e91716-906b-4622-9819-008f06013ea5",
+            "Duration": 3,
+            "Impact": 6
+        },
+        {
+            "TaskID": "0182b555-8178-48a7-b944-47934f3e9119",
+            "Duration": 6,
+            "Impact": 8
+        }
 
-### Notification Read
 
-```json
-{
-  "event": "notification:read",
-  "data": {
-    "id": "10",
-    "isRead": true
-  }
-}
-```
-
-### Notification Deleted
-
-```json
-{
-  "event": "notification:delete",
-  "data": {
-    "id": "10"
-  }
-}
 ```
 
 ---
